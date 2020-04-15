@@ -1,13 +1,14 @@
 version: '3.1'
 
 services:
-  inn:
-    container_name: inn
+  fns:
+    container_name: fns
     image: digitalidea/laravel:latest
     ports:
       - "3333:80"
     depends_on:
       - mysql
+      - redis
     volumes:
       - ./:/var/www/html:cached
     environment:
@@ -16,17 +17,24 @@ services:
       APP_KEY: "base64:avB3F4ITBiS7n7+ffc66TP6YvS9QuS9JLJwpq+iwUkg="
 
   mysql:
-    container_name: inn-mysql
+    container_name: fns-mysql
     image: mysql:8.0.15
     command: ['--character-set-server=utf8mb4','--collation-server=utf8mb4_unicode_ci','--default-authentication-plugin=mysql_native_password','--log-output=FILE','--slow-query-log=1','--log-queries-not-using-indexes=1','--long-query-time=0.5','--general-log=1']
     volumes:
       - db_data:/var/lib/mysql:cached
     environment:
       - MYSQL_ROOT_PASSWORD=secret
-      - MYSQL_DATABASE=inn
-      - MYSQL_USER=inn
-      - MYSQL_PASSWORD=Secret_135
+      - MYSQL_DATABASE=fns
+      - MYSQL_USER=fns
+      - MYSQL_PASSWORD=12345
     ports:
       - "3306:3306"
+
+  redis:
+    container_name: fns_redis
+    image: redis
+    ports:
+      - "6379:6379"
+
 volumes:
   db_data:

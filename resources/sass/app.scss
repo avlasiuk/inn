@@ -18,6 +18,10 @@
 
     &__input {
         max-width: 174px;
+
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
     }
 
     &__error {

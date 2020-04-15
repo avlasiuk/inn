@@ -17,4 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::post('/', 'InnController@check')->name('check');
+Route::post('/', 'TaxPayerController@checkStatus')->name('check');

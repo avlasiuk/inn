@@ -10,9 +10,9 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "start": "docker-compose up -d",
         "docker": "docker-compose down && docker-compose build",
-        "composer": "docker-compose run --workdir='/var/www/html' inn composer install",
+        "composer": "docker-compose run --workdir='/var/www/html' fns composer install",
         "setup-env": "npm run docker && npm run start && npm run composer && npm run migrate",
-        "migrate": "docker-compose run --workdir='/var/www/html' inn php artisan migrate",
+        "migrate": "docker-compose run --workdir='/var/www/html' fns php artisan migrate",
         "setup-frontend": "npm i && npm run dev",
         "setup": "npm run setup-env && npm run setup-frontend"
     },
