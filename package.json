@@ -17,7 +17,7 @@
         "setup": "npm run setup-env && npm run setup-frontend"
     },
     "devDependencies": {
-        "axios": "^0.19",
+        "axios": "^0.21",
         "bootstrap": "^4.0.0",
         "cross-env": "^7.0",
         "jquery": "^3.2",
